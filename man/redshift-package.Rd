@@ -2,44 +2,29 @@
 \alias{redshift-package}
 \alias{redshift}
 \docType{package}
-\title{
-What the package does (short line)
-~~ package title ~~
-}
+\title{Little library to connect to Amazon's Redshift Service}
 \description{
-More about what it does (maybe more than one line)
-~~ A concise (1-5 lines) description of the package ~~
+Provides a few functions (and the required JDBC driver) to connect to Amazon's Redshift service.
 }
 \details{
 \tabular{ll}{
 Package: \tab redshift\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
+Version: \tab 0.2\cr
 Date: \tab 2013-04-29\cr
-License: \tab What license is it under?\cr
+License: \tab Eclipse Public License\cr
 }
-~~ An overview of how to use the package, including the most important functions ~~
 }
 \author{
-Who wrote it
-
-Maintainer: Who to complain to <yourfault@somewhere.net>
-~~ The author and/or maintainer of the package ~~
+Paul Ingles
+Maintainer: Paul Ingles <paul@oobaloo.co.uk>
 }
-\references{
-~~ Literature or other references for background information ~~
-}
-~~ Optionally other standard keywords, one per line, from file KEYWORDS in the R ~~
-~~ documentation directory ~~
 \keyword{ package }
-\seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
+\keyword{ database }
 \examples{
-# the JDBC URL can be found in Amazon's AWS Control Panel, just copy and paste it into here
-conn <- redshift.connect("jdbc:postgresql://blah.blah.eu-west-1.redshift.amazonaws.com:5439/data", "username", "password")
+## the JDBC URL can be found in Amazon's AWS Control Panel, just copy and paste it into here
+#conn <- redshift.connect("jdbc:postgresql://blah.blah.eu-west-1.redshift.amazonaws.com:5439/data", "username", "password")
 
-# list the names of the tables we can query
-tables <- redshift.tables(conn)
+## list the names of the tables we can query
+#tables <- redshift.tables(conn)
 }
