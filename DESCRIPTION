@@ -1,0 +1,10 @@
+Package: redshift
+Type: Package
+Title: Easier access to AWS Redshift clusters
+Version: 0.2
+Date: 2013-04-29
+Author: Paul Ingles
+Maintainer: Paul Ingles <paul@oobaloo.co.uk>
+Description: Provides a few functions to make it easier to access Amazon's new Redshift service.
+License: Eclipse Public License
+Depends: RJDBC (>= 0.2-1)
