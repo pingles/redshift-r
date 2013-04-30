@@ -1,6 +1,6 @@
 # Redshift for R
 
-Provides a few functions to make it easier to access our Redshift cluster from R.
+Provides a few functions to make it easier to access [Amazon's Redshift](http://aws.amazon.com/redshift/) service from R.
 
 This library essentially does very little, other than provide some nicer functions that use the [RJDBC](http://www.rforge.net/RJDBC/index.html) package. However, the code includes the Postgresql 8.4-703 JDBC driver that is required for connecting to Amazon's Redshift service; installing this package would install all dependencies necessary to start querying and analysing.
 
