@@ -21,3 +21,7 @@ redshift.columns <- function(conn, tableName) {
   sql <- paste("SELECT column_name, data_type, is_nullable FROM information_schema.columns WHERE table_name ='", tableName, "';", sep="")
   dbGetQuery(conn, sql)
 }
+
+redshift.query <- function(conn, ...) {
+  dbGetQuery(conn, paste(...))
+}
