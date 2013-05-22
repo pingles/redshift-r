@@ -23,5 +23,5 @@ redshift.columns <- function(conn, tableName) {
 }
 
 redshift.query <- function(conn, ...) {
-  dbGetQuery(conn, paste(...))
+  dbGetQuery(conn, paste(..., collapse=' ', sep=' '))
 }
