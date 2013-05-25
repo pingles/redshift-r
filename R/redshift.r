@@ -9,7 +9,8 @@ redshift.driver <- function() {
 
 redshift.connect <- function(jdbcUrl, username, password) {
   driver <- redshift.driver()
-  url <- paste(jdbcUrl, "?user=", username, "&password=", password, sep="")
+  lead <- ifelse(grepl("\\?", jdbcUrl), "&", "?")
+  url <- paste(jdbcUrl, lead, "user=", username, "&password=", password, sep="")
   conn <- dbConnect(driver, url)
 }
 
