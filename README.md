@@ -8,7 +8,8 @@ This library essentially does very little, other than provide some nicer functio
 
 [Download the latest code tarball](https://github.com/pingles/redshift-r/archive/master.zip). Unzip the archive and run the following command in R:
 
-    install.packages("/Users/me/Downloads/redshift-r-master", dependencies=T, repos=NULL, type="source")
+    install.packages("RJDBC", dependencies=T)
+    install.packages("/Users/me/Downloads/redshift-r-master", dependencies=F, repos=NULL, type="source")
 
 ## Usage
     require(redshift)
