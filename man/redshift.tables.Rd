@@ -5,10 +5,11 @@
 Lists the names of the tables available in the Redshift database
 }
 \usage{
-redshift.tables(conn)
+redshift.tables(conn, schema='public')
 }
 \arguments{
   \item{conn}{RJDBC connection created with \link{redshift.connect}}
+  \item{schema}{The schema name}
 }
 \value{
 Data frame containing the names of the tables.
@@ -23,6 +24,7 @@ Paul Ingles
 require(redshift)
 # conn <- redshift.connect("jdbc:postgresql://blah.blah.eu-west-1.redshift.amazonaws.com:5439/data", "username", "password")
 # tables <- redshift.tables(conn)
+# tables2 <- redshift.tables(conn, schema='test')
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
