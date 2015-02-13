@@ -39,7 +39,7 @@ redshift.submitquery <- function(conn, ...) {
 }
 
 redshift.unload <- function(conn, query, filename, aws.accesskey, aws.secretkey, delim = ',', 
-                            allowOverwrite = TRUE, parallel = TRUE, zip = TRUE){
+                            allowOverwrite = TRUE, parallel = TRUE, zip = TRUE, addquotes = FALSE){
   query = gsub("'","''",query)
   sql = paste0("('",gsub(";","",query),"')")
   loc = paste0("'",filename,"'")
@@ -47,9 +47,10 @@ redshift.unload <- function(conn, query, filename, aws.accesskey, aws.secretkey,
   delimiter = paste0("'",delim,"'")
   if(!parallel) par = "PARALLEL OFF" else par = ""
   if(!zip) gzip = "" else gzip = "GZIP"
+  if(!addquotes) addquotes = "" else addquotes = "ADDQUOTES"
   if(!allowOverwrite) aow = "" else aow = "ALLOWOVERWRITE"
   
-  unload.query = paste(c("UNLOAD",sql, "TO", loc, "CREDENTIALS", cred, "DELIMITER", delimiter, gzip, par, aow,";"),collapse = " ")
+  unload.query = paste(c("UNLOAD",sql, "TO", loc, "CREDENTIALS", cred, "DELIMITER", delimiter, gzip, par, addquotes, aow,";"),collapse = " ")
   unload.query = gsub("\\s+"," ",unload.query)
   print(unload.query)
   dbSendUpdate(conn,unload.query)
