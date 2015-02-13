@@ -21,12 +21,13 @@ redshift.disconnect <- function(conn){
   if(!dbDisconnect(conn)) print("Unable to Close Connection") 
 }
 
-redshift.tables <- function(conn) {
-  dbGetQuery(conn, "SELECT table_name FROM information_schema.tables WHERE table_schema = 'public'")
+redshift.tables <- function(conn, schema='public') {
+  sql <- paste0("SELECT table_name FROM information_schema.tables WHERE table_schema = '", schema, "';")
+  dbGetQuery(conn, sql)
 }
 
-redshift.columns <- function(conn, tableName) {
-  sql <- paste("SELECT column_name, data_type, is_nullable FROM information_schema.columns WHERE table_name ='", tableName, "';", sep="")
+redshift.columns <- function(conn, schema='public', tableName) {
+  sql <- paste0("SELECT column_name, data_type, is_nullable FROM information_schema.columns WHERE table_schema = '", schema, "' AND table_name ='", tableName, "';")
   dbGetQuery(conn, sql)
 }
 
