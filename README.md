@@ -6,6 +6,8 @@ This library essentially does very little, other than provide some nicer functio
 
 ## Installing
 
+Installing with [devtools](http://cran.r-project.org/web/packages/devtools/index.html) is probably easiest or you can install from the source/tarball. The project is currently not part of CRAN.
+
 ### Devtools
 
     install.packages("devtools")
