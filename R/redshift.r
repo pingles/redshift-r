@@ -55,3 +55,14 @@ redshift.unload <- function(conn, query, filename, aws.accesskey, aws.secretkey,
   print(unload.query)
   dbSendUpdate(conn,unload.query)
 }
+
+redshift.insertTable = function(conn, dataframe, rs.tablename){
+  insertValuesString = paste(apply(dataframe,1,function(x){
+    paste0("(",paste(sapply(x,function(val){
+      paste0("'",gsub("'","''",val),"'")
+    }),collapse = ","),")")
+  }),collapse = ',')
+  
+  insertQuery = paste0("Insert into ",rs.tablename," values ",insertValuesString)
+  dbSendUpdate(conn,insertQuery)
+}
