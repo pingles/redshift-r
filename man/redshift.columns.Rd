@@ -7,12 +7,12 @@ Columns in Redshift table
 Provides metadata about the columns available within a Redshift table
 }
 \usage{
-redshift.columns(conn, schema='public', tableName)
+redshift.columns(conn, tableName, schema='public')
 }
 \arguments{
   \item{conn}{The RJDBC connection object created with \link{redshift.connect}}
-  \item{schema}{The schema name}
   \item{tableName}{Table name as a string}
+  \item{schema}{The schema name}
 }
 \value{
 Returns a dataframe listing: column name, data type, nullable.
