@@ -5,9 +5,9 @@ library(RJDBC)
 redshift.driver <- function(postgresql_driver = "default") {
   if(postgresql_driver != "default"){
     driver.class.path <- postgresql_driver
-  } else  driver.class.path <- system.file("java", "postgresql-8.4-703.jdbc4.jar", package = "redshift")
+  } else  driver.class.path <- system.file("java", "RedshiftJDBC41-1.1.10.1010.jar", package = "redshift")
   
-  return(JDBC("org.postgresql.Driver", driver.class.path, identifier.quote="`"))
+  return(JDBC("com.amazon.redshift.jdbc41.Driver", driver.class.path, identifier.quote="`"))
 }
 
 redshift.connect <- function(jdbcUrl, username, password, custom_driver = "default") {
