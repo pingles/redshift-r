@@ -1,7 +1,7 @@
 Package: redshift
 Type: Package
 Title: Easier access to AWS Redshift clusters
-Version: 0.4
+Version: 0.5
 Date: 2013-04-30
 Author: Paul Ingles
 Maintainer: Paul Ingles <paul@oobaloo.co.uk>
