@@ -39,12 +39,19 @@ redshift.submitquery <- function(conn, ...) {
   dbSendUpdate(conn, paste(..., collapse=' ', sep=' '))
 }
 
-redshift.unload <- function(conn, query, filename, aws.accesskey, aws.secretkey, delim = ',', 
-                            allowOverwrite = TRUE, parallel = TRUE, zip = TRUE, addquotes = FALSE){
+redshift.unload <- function(conn, query, filename, aws.accesskey = '', aws.secretkey = '', delim = ',',
+                            allowOverwrite = TRUE, parallel = TRUE, zip = TRUE, addquotes = FALSE, aws.role = ''){
   query = gsub("'","''",query)
   sql = paste0("('",gsub(";","",query),"')")
   loc = paste0("'",filename,"'")
-  cred = paste0("'aws_access_key_id=",aws.accesskey,";aws_secret_access_key=",aws.secretkey,"'")
+  if (aws.role != '') {
+      cred = paste0("'aws_iam_role=",aws.role,"'")
+  } else if (aws.accesskey != '' && aws.secretkey != '') {
+      cred = paste0("'aws_access_key_id=",aws.accesskey,";aws_secret_access_key=",aws.secretkey,"'")
+      warning("AWS recommend role-based access control: http://docs.aws.amazon.com/redshift/latest/dg/copy-usage_notes-access-permissions.html#copy-usage_notes-access-role-based")
+  } else {
+      stop("aws.accesskey and aws.secretkey, or aws.role must be set")
+  }
   delimiter = paste0("'",delim,"'")
   if(!parallel) par = "PARALLEL OFF" else par = ""
   if(!zip) gzip = "" else gzip = "GZIP"
